@@ -766,6 +766,7 @@
 <!-- STORY -->
 <section id="story" style="position:relative; overflow:hidden;">
 <img src="photos/story-bg.png" style="position:absolute; pointer-events:none; z-index:0; right:-20px; top:-10px; width:280px; opacity:0.8; transform:scaleX(-1);" alt="">
+<img src="photos/decor-eucalyptus2.png" style="position:absolute; pointer-events:none; z-index:0; left:-30px; bottom:5%; width:240px; opacity:0.55; transform:rotate(8deg);" alt="">
 <div class="story-layout">
     <div class="story-text reveal" style="position:relative;">
 <p class="section-eyebrow">Наша история</p>
@@ -840,8 +841,10 @@
 
 <!-- DRESSCODE -->
 <div style="background: var(--white); width: 100%; position:relative; overflow:hidden;">
-<!-- волнистая вода внизу -->
-  
+<img src="photos/dresscode-acc-bowtie.png" style="position:absolute; pointer-events:none; z-index:0; right:-30px; top:40px; width:220px; opacity:0.18; transform:rotate(15deg);" alt="">
+<img src="photos/dresscode-acc-hat.png" style="position:absolute; pointer-events:none; z-index:0; left:-20px; bottom:60px; width:240px; opacity:0.2; transform:rotate(-12deg);" alt="">
+<img src="photos/dresscode-acc-bag.png" style="position:absolute; pointer-events:none; z-index:0; right:5%; bottom:-20px; width:160px; opacity:0.15; transform:rotate(-8deg);" alt="">
+
 <section id="dresscode" style="max-width: 1100px;">
   <div class="reveal">
     <p class="section-eyebrow">Дресс-код</p>
@@ -892,25 +895,6 @@
       <div class="photo-label">Палитра · детали</div>
       <img id="dc6-img" src="" alt="Дресс-код 6">
       <input type="file" accept="image/*" onchange="loadPhoto(this,'dc6-img','dc6')">
-    </div>
-  </div>
-
-  <!-- Аксессуары -->
-  <div class="reveal" style="margin-top:2.5rem;">
-    <p style="font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); margin-bottom:1rem;">✦ Аксессуары</p>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem;">
-      <div style="background:var(--white); border:1px solid rgba(122,140,110,0.18); padding:1.5rem; display:flex; flex-direction:column; align-items:center; gap:0.8rem;">
-        <img src="photos/dresscode-acc-bowtie.png" style="width:100%; max-height:180px; object-fit:contain;" alt="Галстук-бабочка">
-        <p style="font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--stone-light);">Галстук-бабочка</p>
-      </div>
-      <div style="background:var(--white); border:1px solid rgba(122,140,110,0.18); padding:1.5rem; display:flex; flex-direction:column; align-items:center; gap:0.8rem;">
-        <img src="photos/dresscode-acc-hat.png" style="width:100%; max-height:180px; object-fit:contain;" alt="Шляпа">
-        <p style="font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--stone-light);">Шляпа</p>
-      </div>
-      <div style="background:var(--white); border:1px solid rgba(122,140,110,0.18); padding:1.5rem; display:flex; flex-direction:column; align-items:center; gap:0.8rem;">
-        <img src="photos/dresscode-acc-bag.png" style="width:100%; max-height:180px; object-fit:contain;" alt="Сумка">
-        <p style="font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--stone-light);">Сумка</p>
-      </div>
     </div>
   </div>
 
@@ -1100,6 +1084,9 @@
 <!-- GALLERY -->
 <div style="background: var(--cream); width: 100%; position:relative; overflow:hidden;">
 <img src="photos/gallery-bg-2.png" style="position:absolute; pointer-events:none; z-index:0; right:-20px; top:-20px; width:240px; opacity:0.6;" alt="">
+<img src="photos/decor-eucalyptus1.png" style="position:absolute; pointer-events:none; z-index:0; left:-30px; top:10%; width:260px; opacity:0.5; transform:rotate(10deg);" alt="">
+<img src="photos/decor-poppies.png" style="position:absolute; pointer-events:none; z-index:0; right:-20px; bottom:5%; width:220px; opacity:0.45; transform:rotate(-8deg);" alt="">
+<img src="photos/decor-roses.png" style="position:absolute; pointer-events:none; z-index:0; left:50%; bottom:-30px; width:200px; opacity:0.4; transform:translateX(-50%) rotate(5deg);" alt="">
 <section id="gallery" style="max-width: 1100px;">
   <div class="reveal">
     <p class="section-eyebrow">Атмосфера</p>
@@ -1121,31 +1108,31 @@
       <input type="file" accept="image/*" onchange="loadPhoto(this,'g2-img','g2')">
     </div>
     <!-- ФОТО 3 -->
-    <div class="gallery-slot has-image" id="g3">
+    <div class="gallery-slot" id="g3">
       <div class="photo-placeholder-icon">📷</div>
       <div class="photo-label">Фото 3 · горы или природа</div>
-      <img id="g3-img" src="photos/decor-eucalyptus1.png" alt="Галерея 3">
+      <img id="g3-img" src="" alt="Галерея 3">
       <input type="file" accept="image/*" onchange="loadPhoto(this,'g3-img','g3')">
     </div>
     <!-- ФОТО 4 -->
-    <div class="gallery-slot has-image" id="g4">
+    <div class="gallery-slot" id="g4">
       <div class="photo-placeholder-icon">📷</div>
       <div class="photo-label">Фото 4 · декор или цветы</div>
-      <img id="g4-img" src="photos/decor-poppies.png" alt="Галерея 4">
+      <img id="g4-img" src="" alt="Галерея 4">
       <input type="file" accept="image/*" onchange="loadPhoto(this,'g4-img','g4')">
     </div>
     <!-- ФОТО 5 -->
-    <div class="gallery-slot has-image" id="g5">
+    <div class="gallery-slot" id="g5">
       <div class="photo-placeholder-icon">📷</div>
       <div class="photo-label">Фото 5 · банкетная зона</div>
-      <img id="g5-img" src="photos/decor-eucalyptus2.png" alt="Галерея 5">
+      <img id="g5-img" src="" alt="Галерея 5">
       <input type="file" accept="image/*" onchange="loadPhoto(this,'g5-img','g5')">
     </div>
     <!-- ФОТО 6 -->
-    <div class="gallery-slot has-image" id="g6">
+    <div class="gallery-slot" id="g6">
       <div class="photo-placeholder-icon">📷</div>
       <div class="photo-label">Фото 6 · детали или атмосфера</div>
-      <img id="g6-img" src="photos/decor-roses.png" alt="Галерея 6">
+      <img id="g6-img" src="" alt="Галерея 6">
       <input type="file" accept="image/*" onchange="loadPhoto(this,'g6-img','g6')">
     </div>
   </div>
