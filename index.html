@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Свадьба — [Имя] & [Имя]</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage: #5a7a4a;
+    --sage-light: #8aaa78;
+    --sage-pale: #e2edd8;
+    --lemon: #c49020;
+    --lemon-pale: #faefc8;
+    --water: #4a8aaa;
+    --cream: #f7f2e4;
+    --stone: #2e2a26;
+    --stone-light: #6a6258;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--stone);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; justify-content: center; gap: 2.5rem;
+    padding: 1.1rem 2rem;
+    background: rgba(250, 247, 240, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(122,140,110,0.15);
+    letter-spacing: 0.12em;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--stone-light);
+    transition: color 0.3s;
+  }
+  nav a:hover { color: var(--sage); }
+  /* NATURE DECORATIONS */
+  .nature-deco {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .nature-deco svg { display: block; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(74,138,170,0.2) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 80% 20%, rgba(90,122,74,0.22) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(196,144,32,0.1) 0%, transparent 70%);
+  }
+
+  .lemon-deco {
+    position: absolute;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .lemon-deco.tl { top: 8%; left: 5%; transform: rotate(-20deg); }
+  .lemon-deco.tr { top: 12%; right: 6%; transform: rotate(25deg); }
+  .lemon-deco.bl { bottom: 10%; left: 8%; transform: rotate(15deg); }
+  .lemon-deco.br { bottom: 8%; right: 5%; transform: rotate(-30deg); }
+
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 2rem;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 300;
+    line-height: 1;
+    color: var(--stone);
+    animation: fadeUp 1s ease 0.15s both;
+  }
+  .hero-names span { color: var(--sage); }
+
+  .hero-ampersand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--lemon);
+    line-height: 1.2;
+    display: block;
+    margin: 0.2em 0;
+  }
+
+  .hero-divider {
+    display: flex; align-items: center; gap: 1.5rem;
+    margin: 2.5rem auto;
+    width: 280px;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+  .hero-divider::before, .hero-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--sage-light), transparent);
+  }
+  .hero-divider-icon { color: var(--lemon); font-size: 1rem; }
+
+  .hero-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--stone-light);
+    animation: fadeUp 1s ease 0.45s both;
+  }
+
+  .hero-location {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-top: 0.6rem;
+    animation: fadeUp 1s ease 0.55s both;
+  }
+
+  .hero-cta {
+    margin-top: 3rem;
+    animation: fadeUp 1s ease 0.7s both;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2.5rem;
+    border: 1px solid var(--sage);
+    color: var(--sage);
+    text-decoration: none;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    background: transparent;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: var(--sage);
+    color: var(--white);
+  }
+  .btn-primary {
+    background: var(--sage);
+    color: var(--white);
+  }
+  .btn-primary:hover {
+    background: var(--stone);
+    border-color: var(--stone);
+  }
+
+  /* SCROLL INDICATOR */
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: var(--stone-light);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: fadeUp 1s ease 1s both;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--sage-light), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sage);
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+  .section-eyebrow::after {
+    content: '';
+    flex: 0 0 40px;
+    height: 1px;
+    background: var(--sage-light);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--sage);
+  }
+
+  /* STORY */
+  .story-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .story-text p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--stone-light);
+    margin-bottom: 1.2rem;
+  }
+  .story-text p strong {
+    color: var(--stone);
+    font-weight: 400;
+  }
+
+  .story-visual {
+    position: relative;
+  }
+  .photo-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--sage-pale);
+    border: 1px solid rgba(122,140,110,0.2);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.8rem;
+    color: var(--sage-light);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-frame::before {
+    content: '';
+    position: absolute; inset: 12px;
+    border: 1px solid rgba(122,140,110,0.15);
+    pointer-events: none;
+  }
+  .photo-placeholder-icon {
+    font-size: 2.5rem;
+    opacity: 0.4;
+  }
+  .photo-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    opacity: 0.6;
+  }
+
+  .story-accent {
+    position: absolute;
+    bottom: -1.5rem; right: -1.5rem;
+    width: 120px; height: 120px;
+    background: var(--lemon-pale);
+    border: 1px solid rgba(212,168,50,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--lemon);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* DETAILS CARDS */
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .detail-card {
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(122,140,110,0.2);
+    background: var(--white);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .detail-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(122,140,110,0.1);
+  }
+  .detail-icon {
+    width: 48px; height: 48px;
+    margin: 0 auto 1.5rem;
+    border: 1px solid var(--sage-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--sage);
+    font-size: 1.2rem;
+  }
+  .detail-title {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.8rem;
+  }
+  .detail-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+  .detail-sub {
+    font-size: 0.78rem;
+    color: var(--stone-light);
+    line-height: 1.6;
+  }
+
+  /* PROGRAM */
+  .program-section { background: var(--sage-pale); }
+  .program-section > * { max-width: 1100px; margin-left: auto; margin-right: auto; }
+
+  .program-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .timeline {
+    margin-top: 3rem;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 80px; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--sage-light), transparent);
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    align-items: start;
+  }
+  .timeline-time {
+    text-align: right;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--stone-light);
+    padding-top: 0.1rem;
+  }
+  .timeline-content {
+    padding-left: 2rem;
+    position: relative;
+  }
+  .timeline-content::before {
+    content: '';
+    position: absolute;
+    left: -0.4rem; top: 0.5rem;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--lemon);
+    border: 1px solid var(--white);
+    box-shadow: 0 0 0 3px rgba(212,168,50,0.2);
+  }
+  .timeline-event {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--stone);
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.02em;
+  }
+  .timeline-desc {
+    font-size: 0.82rem;
+    color: var(--stone-light);
+    line-height: 1.6;
+  }
+
+  /* HOTEL */
+  .hotel-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .hotel-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--water) 0%, rgba(106,157,181,0.3) 50%, var(--sage-pale) 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--water);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    flex-direction: column;
+    gap: 0.8rem;
+    border: 1px solid rgba(106,157,181,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .hotel-img-label { opacity: 0.5; font-size: 0.6rem; }
+
+  .hotel-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  .hotel-info p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--stone-light);
+    margin-bottom: 1.2rem;
+  }
+  .hotel-info a {
+    color: var(--sage);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.3s;
+  }
+  .hotel-info a:hover { text-decoration-color: var(--sage); }
+
+  .hotel-features {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin: 1.5rem 0;
+  }
+  .hotel-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid rgba(122,140,110,0.3);
+    color: var(--sage);
+    text-transform: uppercase;
+  }
+
+  /* FAQ */
+  .faq-section { background: var(--white); }
+  .faq-list {
+    margin-top: 3rem;
+    max-width: 720px;
+  }
+  .faq-item {
+    border-bottom: 1px solid rgba(122,140,110,0.15);
+    padding: 1.5rem 0;
+  }
+  .faq-question {
+    font-size: 0.95rem;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem;
+    user-select: none;
+  }
+  .faq-question::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: var(--sage);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  .faq-item.open .faq-question::after {
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    font-size: 0.85rem;
+    color: var(--stone-light);
+    line-height: 1.8;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+  }
+  .faq-item.open .faq-answer {
+    max-height: 300px;
+    padding-top: 1rem;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--stone);
+    color: rgba(250,247,240,0.6);
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  footer .footer-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(250,247,240,0.85);
+    text-transform: none;
+    letter-spacing: 0;
+    margin-bottom: 1rem;
+  }
+  footer .footer-hearts { color: var(--lemon); margin: 0 0.4rem; }
+
+  /* STORY PHOTOS */
+  .story-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  .story-photo {
+    background: var(--sage-pale);
+    border: 1px solid rgba(122,140,110,0.18);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem;
+    color: var(--sage-light);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+  .story-photo:hover { border-color: var(--sage); }
+  .story-photo:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/9;
+  }
+  .story-photo:not(:first-child) { aspect-ratio: 4/3; }
+  .story-photo img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+  .story-photo.has-image img { display: block; }
+  .story-photo.has-image .photo-placeholder-icon,
+  .story-photo.has-image .photo-label { display: none; }
+  .story-photo input[type="file"] {
+    position: absolute; inset: 0;
+    opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+  .story-photo-num {
+    position: absolute; top: 8px; left: 10px;
+    font-size: 0.55rem; color: var(--sage-light);
+    letter-spacing: 0.1em;
+  }
+
+  /* DRESSCODE */
+  .dresscode-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .dresscode-slot {
+    background: var(--sage-pale);
+    border: 1px solid rgba(122,140,110,0.18);
+    aspect-ratio: 3/4;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem;
+    color: var(--sage-light);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .dresscode-slot:hover { border-color: var(--sage); transform: scale(1.01); }
+  .dresscode-slot img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+  .dresscode-slot.has-image img { display: block; }
+  .dresscode-slot.has-image .photo-placeholder-icon,
+  .dresscode-slot.has-image .photo-label { display: none; }
+  .dresscode-slot input[type="file"] {
+    position: absolute; inset: 0;
+    opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+  @media (max-width: 768px) {
+    .dresscode-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* GALLERY */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  .gallery-slot {
+    background: var(--sage-pale);
+    border: 1px solid rgba(122,140,110,0.18);
+    aspect-ratio: 4/3;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem;
+    color: var(--sage-light);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .gallery-slot:hover { border-color: var(--sage); transform: scale(1.01); }
+  .gallery-slot:first-child {
+    grid-column: span 2;
+    aspect-ratio: 16/9;
+  }
+  .gallery-slot img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+  .gallery-slot.has-image img { display: block; }
+  .gallery-slot.has-image .photo-placeholder-icon,
+  .gallery-slot.has-image .photo-label { display: none; }
+  .gallery-slot input[type="file"] {
+    position: absolute; inset: 0;
+    opacity: 0; cursor: pointer; width: 100%; height: 100%;
+  }
+  .gallery-caption {
+    max-width: 560px;
+    font-size: 0.82rem;
+    color: var(--stone-light);
+    line-height: 1.7;
+    margin-top: 2rem;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-slot:first-child { grid-column: span 2; }
+    .story-photos { grid-template-columns: 1fr; }
+    .story-photo:first-child { aspect-ratio: 4/3; }
+  }
+
+  /* LEMON SVG DECORATIONS */
+  .lemon-svg {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.08;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50%       { opacity: 1;   transform: scaleY(1.15); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { gap: 1.2rem; font-size: 0.6rem; }
+    .story-layout, .hotel-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .details-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .timeline::before { left: 60px; }
+    .timeline-item { grid-template-columns: 60px 1fr; gap: 1rem; }
+    .story-visual { order: -1; }
+    .story-accent { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#story">История</a>
+  <a href="#details">Детали</a>
+  <a href="#dresscode">Дресс-код</a>
+  <a href="#arrival">14 августа</a>
+  <a href="#program">15 августа</a>
+  <a href="#gallery">Галерея</a>
+  <a href="#hotel">Отель</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="hero-bg"></div>
+<img src="photos/hero-bg-1.png" style="position:absolute; pointer-events:none; z-index:0; left:-40px; bottom:-20px; width:340px; opacity:0.75; transform:rotate(-10deg);" alt="">
+<img src="photos/hero-bg-2.png" style="position:absolute; pointer-events:none; z-index:0; right:-60px; top:30px; width:380px; opacity:0.7; transform:rotate(15deg) scaleX(-1);" alt="">
+
+  <!-- Лимонная ветка слева -->
+  
+
+  <!-- Цветы справа -->
+  
+
+  <!-- Горы + водоём снизу по центру -->
+  
+
+
+  <p class="hero-eyebrow">С радостью приглашаем <span id="guest-name">вас</span></p>
+
+  <div class="hero-names">
+    <span>[Имя]</span>
+    <span class="hero-ampersand">&amp;</span>
+    <span>[Имя]</span>
+  </div>
+
+  <div class="hero-divider">
+    <div class="hero-divider-icon">✦</div>
+  </div>
+
+  <p class="hero-date">[Дата свадьбы]</p>
+  <p class="hero-location">◈ [Название отеля] · [Город] ◈</p>
+
+<div class="scroll-hint">
+    <span>Далее</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story" style="position:relative; overflow:hidden;">
+<img src="photos/story-bg.png" style="position:absolute; pointer-events:none; z-index:0; right:-20px; top:-10px; width:280px; opacity:0.8; transform:scaleX(-1);" alt="">
+<img src="photos/decor-eucalyptus2.png" style="position:absolute; pointer-events:none; z-index:0; left:-30px; bottom:5%; width:240px; opacity:0.55; transform:rotate(8deg);" alt="">
+<div class="story-layout">
+    <div class="story-text reveal" style="position:relative;">
+<p class="section-eyebrow">Наша история</p>
+      <h2 class="section-title">Всё началось с<br><em>одной встречи</em></h2>
+      <p>Расскажите вашу историю здесь — как вы познакомились, где это произошло, что вы почувствовали в тот момент. Этот текст можно заменить на вашу собственную историю любви.</p>
+      <p>Несколько лет спустя, в самый обычный день, прозвучал тот самый вопрос, ответ на который изменил всё. И теперь мы хотим разделить этот особенный день с самыми близкими людьми.</p>
+      <p>Мы выбрали место у воды — среди зелени, гор и итальянских лимонов — потому что именно здесь мы чувствуем себя дома.</p>
+    </div>
+    <div class="story-visual reveal">
+      <div class="story-photos">
+        <!-- ФОТО 1: главное фото (широкое) — нажмите чтобы загрузить, или замените src на путь к файлу -->
+        <div class="story-photo" id="sp1">
+          <span class="story-photo-num">01</span>
+          <div class="photo-placeholder-icon">📷</div>
+          <div class="photo-label">Главное фото</div>
+          <img id="sp1-img" src="" alt="Фото 1">
+          <input type="file" accept="image/*" onchange="loadPhoto(this,'sp1-img','sp1')">
+        </div>
+        <!-- ФОТО 2: левое нижнее -->
+        <div class="story-photo" id="sp2">
+          <span class="story-photo-num">02</span>
+          <div class="photo-placeholder-icon">📷</div>
+          <div class="photo-label">Фото 2</div>
+          <img id="sp2-img" src="" alt="Фото 2">
+          <input type="file" accept="image/*" onchange="loadPhoto(this,'sp2-img','sp2')">
+        </div>
+        <!-- ФОТО 3: правое нижнее -->
+        <div class="story-photo" id="sp3">
+          <span class="story-photo-num">03</span>
+          <div class="photo-placeholder-icon">📷</div>
+          <div class="photo-label">Фото 3</div>
+          <img id="sp3-img" src="" alt="Фото 3">
+          <input type="file" accept="image/*" onchange="loadPhoto(this,'sp3-img','sp3')">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<div style="background: var(--sage-pale); width: 100%; position:relative; overflow:hidden;">
+<img src="photos/dresscode-bg-1.png" style="position:absolute; pointer-events:none; z-index:0; right:-30px; bottom:-20px; width:260px; opacity:0.65; transform:rotate(-10deg);" alt="">
+<img src="photos/dresscode-bg-2.png" style="position:absolute; pointer-events:none; z-index:0; left:20px; top:20px; width:100px; opacity:0.35; transform:rotate(-15deg);" alt="">
+
+<section id="details" style="max-width: 1100px;">
+  <div class="reveal section-frames">
+    <p class="section-eyebrow">Когда и где</p>
+    <h2 class="section-title">Детали <em>торжества</em></h2>
+  </div>
+  <div class="details-grid">
+    <div class="detail-card reveal">
+      <div class="detail-icon">📅</div>
+      <div class="detail-title">Дата</div>
+      <div class="detail-main">[День Месяц]<br>[Год]</div>
+      <div class="detail-sub">Начало в [00:00]<br>Просьба прибыть заранее</div>
+    </div>
+    <div class="detail-card reveal" style="transition-delay: 0.1s">
+      <div class="detail-icon">📍</div>
+      <div class="detail-title">Место</div>
+      <div class="detail-main">[Название отеля]</div>
+      <div class="detail-sub">[Адрес]<br>[Город, Страна]</div>
+    </div>
+    <div class="detail-card reveal" style="transition-delay: 0.2s">
+      <div class="detail-icon">👗</div>
+      <div class="detail-title">Дресс-код</div>
+      <div class="detail-main">Ярко и празднично</div>
+      <div class="detail-sub">Любые цвета — кроме<br>чисто белого и кремового</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- DRESSCODE -->
+<div style="background: var(--white); width: 100%; position:relative; overflow:hidden;">
+<img src="photos/dresscode-acc-bowtie.png" style="position:absolute; pointer-events:none; z-index:0; right:-30px; top:40px; width:220px; opacity:0.18; transform:rotate(15deg);" alt="">
+<img src="photos/dresscode-acc-hat.png" style="position:absolute; pointer-events:none; z-index:0; left:-20px; bottom:60px; width:240px; opacity:0.2; transform:rotate(-12deg);" alt="">
+<img src="photos/dresscode-acc-bag.png" style="position:absolute; pointer-events:none; z-index:0; right:5%; bottom:-20px; width:160px; opacity:0.15; transform:rotate(-8deg);" alt="">
+
+<section id="dresscode" style="max-width: 1100px;">
+  <div class="reveal">
+    <p class="section-eyebrow">Дресс-код</p>
+    <h2 class="section-title">Как <em>одеться</em></h2>
+    <p style="font-size:0.92rem; color:var(--stone-light); line-height:1.8; max-width:580px; margin-bottom:2.5rem;">
+      Свадьба будет яркой и итальянской — и мы хотим, чтобы образы гостей это отражали. Приветствуются <strong style="color:var(--stone);">любые яркие цвета</strong>: оранжевый, фиолетовый, красный, синий, зелёный. Сливочный и жёлтый — тоже хорошо. Единственная просьба — <strong style="color:var(--stone);">избегайте чисто белого и кремового</strong>: эти оттенки оставим невесте.
+    </p>
+  </div>
+  <div class="dresscode-grid reveal">
+    <!-- ФОТО 1 — женский образ -->
+    <div class="dresscode-slot" id="dc1">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-label">Женский образ · 1</div>
+      <img id="dc1-img" src="" alt="Дресс-код 1">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'dc1-img','dc1')">
+    </div>
+    <!-- ФОТО 2 — женский образ -->
+    <div class="dresscode-slot" id="dc2">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-label">Женский образ · 2</div>
+      <img id="dc2-img" src="" alt="Дресс-код 2">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'dc2-img','dc2')">
+    </div>
+    <!-- ФОТО 3 — женский образ -->
+    <div class="dresscode-slot" id="dc3">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-label">Женский образ · 3</div>
+      <img id="dc3-img" src="" alt="Дресс-код 3">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'dc3-img','dc3')">
+    </div>
+    <!-- ФОТО 4 — мужской образ -->
+    <div class="dresscode-slot" id="dc4">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-label">Мужской образ · 1</div>
+      <img id="dc4-img" src="" alt="Дресс-код 4">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'dc4-img','dc4')">
+    </div>
+    <!-- ФОТО 5 — мужской образ -->
+    <div class="dresscode-slot" id="dc5">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-label">Мужской образ · 2</div>
+      <img id="dc5-img" src="" alt="Дресс-код 5">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'dc5-img','dc5')">
+    </div>
+    <!-- ФОТО 6 — цветовая палитра или детали -->
+    <div class="dresscode-slot" id="dc6">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-label">Палитра · детали</div>
+      <img id="dc6-img" src="" alt="Дресс-код 6">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'dc6-img','dc6')">
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;" class="reveal">
+    <p style="font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); margin-bottom:1rem;">✦ Приветствуется</p>
+    <div style="display:flex; flex-wrap:wrap; gap:0.6rem; margin-bottom:1.8rem;">
+      <div style="display:flex; align-items:center; gap:0.6rem; padding:0.5rem 1rem; border:1px solid rgba(122,140,110,0.2);">
+        <div style="width:14px; height:14px; background:#e8720c; border-radius:2px;"></div>
+        <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone-light);">Оранжевый</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.6rem; padding:0.5rem 1rem; border:1px solid rgba(122,140,110,0.2);">
+        <div style="width:14px; height:14px; background:#7b3fa0; border-radius:2px;"></div>
+        <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone-light);">Фиолетовый</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.6rem; padding:0.5rem 1rem; border:1px solid rgba(122,140,110,0.2);">
+        <div style="width:14px; height:14px; background:#c0392b; border-radius:2px;"></div>
+        <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone-light);">Красный</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.6rem; padding:0.5rem 1rem; border:1px solid rgba(122,140,110,0.2);">
+        <div style="width:14px; height:14px; background:#2471a3; border-radius:2px;"></div>
+        <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone-light);">Синий</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.6rem; padding:0.5rem 1rem; border:1px solid rgba(122,140,110,0.2);">
+        <div style="width:14px; height:14px; background:#7a8c6e; border-radius:2px;"></div>
+        <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone-light);">Зелёный</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.6rem; padding:0.5rem 1rem; border:1px solid rgba(122,140,110,0.2);">
+        <div style="width:14px; height:14px; background:#f5d76e; border-radius:2px;"></div>
+        <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone-light);">Сливочный жёлтый</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.6rem; padding:0.5rem 1rem; border:1px solid rgba(122,140,110,0.2);">
+        <div style="width:14px; height:14px; background:#1a7a6e; border-radius:2px;"></div>
+        <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone-light);">Бирюзовый</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.6rem; padding:0.5rem 1rem; border:1px solid rgba(122,140,110,0.2);">
+        <div style="width:14px; height:14px; background:#c0392b; border-radius:2px; background: linear-gradient(135deg, #e75480, #c0392b);"></div>
+        <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone-light);">Розовый / Фуксия</span>
+      </div>
+    </div>
+    <p style="font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:#b55; margin-bottom:0.8rem;">✕ Лучше избегать</p>
+    <div style="display:flex; flex-wrap:wrap; gap:0.6rem;">
+      <div style="display:flex; align-items:center; gap:0.6rem; padding:0.5rem 1rem; border:1px solid rgba(180,80,80,0.2); background:rgba(180,80,80,0.03);">
+        <div style="width:14px; height:14px; background:#fffdf7; border:1px solid #ddd; border-radius:2px;"></div>
+        <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#b88;">Чисто белый</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.6rem; padding:0.5rem 1rem; border:1px solid rgba(180,80,80,0.2); background:rgba(180,80,80,0.03);">
+        <div style="width:14px; height:14px; background:#f5ede0; border:1px solid #ddd; border-radius:2px;"></div>
+        <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#b88;">Кремовый / Айвори</span>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+<div style="background: var(--lemon-pale); width: 100%; position:relative; overflow:hidden;">
+<!-- цветок справа вверху -->
+  <div class="program-wrapper">
+  <div class="reveal">
+    <p class="section-eyebrow">14 августа · день заезда · опционально</p>
+    <h2 class="section-title">Можно приехать <em>накануне</em></h2>
+    <p style="font-size:0.92rem; color:var(--stone-light); line-height:1.8; max-width:580px; margin-bottom:1.2rem;">
+      Дорога до отеля неблизкая, поэтому мы арендовали его на две ночи — 14 и 15 августа. <strong style="color:var(--stone);">Приезд 14-го опционален</strong> — никаких обязательств нет. Но если хотите не торопиться, заселиться заранее и провести спокойный вечер накануне — мы будем рады. Молодожёны тоже приедут 14-го.
+    </p>
+  </div>
+  <div class="timeline reveal" style="margin-top:2.5rem;">
+    <div class="timeline-item">
+      <div class="timeline-time">15:00</div>
+      <div class="timeline-content">
+        <div class="timeline-event">Заселение в отель</div>
+        <div class="timeline-desc">Заезд открывается с 15:00. Ресепшн подготовит ключи — скажите, что вы гости свадьбы [Имя] &amp; [Имя].</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">15:00–</div>
+      <div class="timeline-content">
+        <div class="timeline-event">Свободное время</div>
+        <div class="timeline-desc">Прогуляйтесь по территории, искупайтесь, отдохните с дороги. Водохранилище и горы уже ждут.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">[00:00]</div>
+      <div class="timeline-content">
+        <div class="timeline-event">Неформальный ужин накануне</div>
+        <div class="timeline-desc">Все приехавшие гости и молодожёны собираются за общим столом — лёгкий ужин, знакомство, атмосфера накануне. Подробности уточним ближе к дате.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">Вечер</div>
+      <div class="timeline-content">
+        <div class="timeline-event">Отдых перед большим днём</div>
+        <div class="timeline-desc">Выспитесь — завтра будет незабываемый день 🌿</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:2.5rem; padding:1.5rem 2rem; border:1px solid rgba(212,168,50,0.25); background:rgba(212,168,50,0.06); max-width:600px;" class="reveal">
+    <p style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--lemon); margin-bottom:0.6rem;">Важно о заселении</p>
+    <p style="font-size:0.85rem; color:var(--stone-light); line-height:1.8;">Заселение в отель — с <strong style="color:var(--stone);">15:00 14 августа</strong>. Выезд — <strong style="color:var(--stone);">до 12:00 16 августа</strong>.</p>
+  </div>
+  </div>
+</div>
+
+<!-- PROGRAM -->
+<div style="background: var(--cream); width: 100%; position:relative; overflow:hidden;">
+<img src="photos/gallery-bg-1.png" style="position:absolute; pointer-events:none; z-index:0; left:-40px; bottom:-20px; width:280px; opacity:0.65; transform:rotate(10deg);" alt="">
+<div class="program-wrapper" id="program">
+  <div class="reveal">
+    <p class="section-eyebrow">15 августа · день свадьбы</p>
+    <h2 class="section-title">Программа <em>праздника</em></h2>
+  </div>
+  <div class="timeline reveal timeline-frames">
+    <div class="timeline-item">
+      <div class="timeline-time">00:00</div>
+      <div class="timeline-content">
+        <div class="timeline-event">Сбор гостей</div>
+        <div class="timeline-desc">Встреча гостей у входа в отель, лёгкие закуски и приветственные напитки</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">00:00</div>
+      <div class="timeline-content">
+        <div class="timeline-event">Церемония бракосочетания</div>
+        <div class="timeline-desc">Выездная регистрация на пирсе над водохранилищем — торжественное обещание вечной любви</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">00:00</div>
+      <div class="timeline-content">
+        <div class="timeline-event">Фотосессия</div>
+        <div class="timeline-desc">Памятные снимки с молодожёнами и группами гостей</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">00:00</div>
+      <div class="timeline-content">
+        <div class="timeline-event">Банкет</div>
+        <div class="timeline-desc">Торжественный ужин, тосты и музыка под открытым небом</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">00:00</div>
+      <div class="timeline-content">
+        <div class="timeline-event">Вечеринка и танцы</div>
+        <div class="timeline-desc">Праздник продолжается — музыка, танцы и незабываемые воспоминания</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- HOTEL -->
+<div style="background: var(--lemon-pale); width: 100%; position:relative; overflow:hidden;">
+<!-- волны воды слева внизу -->
+  
+<section id="hotel" style="max-width: 1100px;">
+  <div class="reveal">
+    <p class="section-eyebrow">Где остановиться</p>
+    <h2 class="section-title">Наш <em>отель</em></h2>
+  </div>
+  <div class="hotel-layout">
+    <div class="hotel-img reveal">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" opacity="0.5">
+        <path d="M10 50 Q30 10 50 50" stroke="#6a9db5" stroke-width="2" fill="none"/>
+        <circle cx="15" cy="42" r="4" fill="#6a9db5" opacity="0.5"/>
+        <circle cx="30" cy="22" r="5" fill="#6a9db5" opacity="0.5"/>
+        <circle cx="45" cy="42" r="4" fill="#6a9db5" opacity="0.5"/>
+        <rect x="5" y="48" width="50" height="2" fill="#6a9db5" opacity="0.4"/>
+      </svg>
+      <div class="hotel-img-label">Фото отеля</div>
+    </div>
+    <div class="hotel-info reveal">
+      <h3>[Название отеля]</h3>
+      <p>Расположен прямо на берегу водохранилища, отель предлагает потрясающий вид на горы и воду. Именно здесь будет проходить церемония на пирсе и торжественный ужин.</p>
+      <p>Для гостей свадьбы действует специальная цена на проживание. Чтобы забронировать номер, свяжитесь с отелем напрямую.</p>
+      <div class="hotel-features">
+        <span class="hotel-tag">Вид на воду</span>
+        <span class="hotel-tag">Пирс</span>
+        <span class="hotel-tag">Горный вид</span>
+        <span class="hotel-tag">Спа</span>
+        <span class="hotel-tag">Ресторан</span>
+        <span class="hotel-tag">Парковка</span>
+      </div>
+      <a href="#" class="btn">Сайт отеля ↗</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- GALLERY -->
+<div style="background: var(--cream); width: 100%; position:relative; overflow:hidden;">
+<img src="photos/gallery-bg-2.png" style="position:absolute; pointer-events:none; z-index:0; right:-20px; top:-20px; width:240px; opacity:0.6;" alt="">
+<img src="photos/decor-eucalyptus1.png" style="position:absolute; pointer-events:none; z-index:0; left:-30px; top:10%; width:260px; opacity:0.5; transform:rotate(10deg);" alt="">
+<img src="photos/decor-poppies.png" style="position:absolute; pointer-events:none; z-index:0; right:-20px; bottom:5%; width:220px; opacity:0.45; transform:rotate(-8deg);" alt="">
+<img src="photos/decor-roses.png" style="position:absolute; pointer-events:none; z-index:0; left:50%; bottom:-30px; width:200px; opacity:0.4; transform:translateX(-50%) rotate(5deg);" alt="">
+<section id="gallery" style="max-width: 1100px;">
+  <div class="reveal">
+    <p class="section-eyebrow">Атмосфера</p>
+    <h2 class="section-title">Место, где <em>всё начнётся</em></h2>
+  </div>
+  <div class="gallery-grid reveal">
+    <!-- ФОТО 1: широкое (занимает 2 колонки) — идеально для вида на водохранилище или пирс -->
+    <div class="gallery-slot" id="g1">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-label">Главный вид · пирс или водохранилище</div>
+      <img id="g1-img" src="" alt="Галерея 1">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'g1-img','g1')">
+    </div>
+    <!-- ФОТО 2 -->
+    <div class="gallery-slot" id="g2">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-label">Фото 2 · территория</div>
+      <img id="g2-img" src="" alt="Галерея 2">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'g2-img','g2')">
+    </div>
+    <!-- ФОТО 3 -->
+    <div class="gallery-slot" id="g3">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-label">Фото 3 · горы или природа</div>
+      <img id="g3-img" src="" alt="Галерея 3">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'g3-img','g3')">
+    </div>
+    <!-- ФОТО 4 -->
+    <div class="gallery-slot" id="g4">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-label">Фото 4 · декор или цветы</div>
+      <img id="g4-img" src="" alt="Галерея 4">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'g4-img','g4')">
+    </div>
+    <!-- ФОТО 5 -->
+    <div class="gallery-slot" id="g5">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-label">Фото 5 · банкетная зона</div>
+      <img id="g5-img" src="" alt="Галерея 5">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'g5-img','g5')">
+    </div>
+    <!-- ФОТО 6 -->
+    <div class="gallery-slot" id="g6">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-label">Фото 6 · детали или атмосфера</div>
+      <img id="g6-img" src="" alt="Галерея 6">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'g6-img','g6')">
+    </div>
+  </div>
+  <p class="gallery-caption reveal">Фотографии похожих мероприятий — чтобы вы могли почувствовать атмосферу нашего особенного дня. Замените эти изображения на фото отеля, пирса и природы вокруг.</p>
+</section>
+</div>
+
+<!-- FAQ -->
+<div style="background: var(--white); width: 100%; position:relative; overflow:hidden;">
+<!-- маленькие листики слева -->
+  
+<section id="faq" style="max-width: 1100px;">
+  <div class="reveal">
+    <p class="section-eyebrow">Вопросы и ответы</p>
+    <h2 class="section-title">Всё, что важно <em>знать</em></h2>
+  </div>
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <div class="faq-question">Можно ли приехать с детьми?</div>
+      <div class="faq-answer">[Ваш ответ здесь. Например: Мы очень любим детей! Дети гостей до 5 лет принимаются без ограничений. Для детей постарше просьба уточнить при подтверждении.]</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Как добраться до отеля?</div>
+      <div class="faq-answer">[Ваш ответ. Например: Ближайший аэропорт — [название], далее такси или трансфер около 40 минут. Мы организуем автобус от [место] — подробности при подтверждении.]</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Будет ли трансфер от/до отеля?</div>
+      <div class="faq-answer">[Ваш ответ. Например: Да, мы организуем трансфер из [город]. Точное расписание будет выслано подтвердившим гостям за 2 недели до свадьбы.]</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Что дарить?</div>
+      <div class="faq-answer">[Ваш ответ. Например: Лучший подарок для нас — ваше присутствие! Если вы хотите сделать что-то особенное, мы будем рады взносу в наш медовый месяц.]</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Что будет, если будет дождь?</div>
+      <div class="faq-answer">[Ваш ответ. Например: Не переживайте — у нас есть крытая резервная площадка прямо в отеле. Мероприятие пройдёт в любую погоду!]</div>
+    </div>
+
+  </div>
+</section>
+</div>
+
+<!-- FOOTER -->
+<footer style="position:relative; overflow:hidden;">
+<img src="photos/gallery-bg-3.png" style="position:absolute; pointer-events:none; z-index:0; right:0; bottom:0; width:300px; opacity:0.2;" alt="">
+
+
+  <div class="footer-names">[Имя] <span class="footer-hearts">♥</span> [Имя]</div>
+  <p>С любовью ждём вас · [Дата] · [Место]</p>
+</footer>
+
+<script>
+  // Гости — добавляйте сюда: код: "Имя"
+  const guests = {
+    "1001": "Анна",
+    "1002": "Михаил",
+    "1003": "Елена",
+    // сюда добавляйте новых гостей...
+  };
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get("g");
+  if (code && guests[code]) {
+    document.getElementById("guest-name").textContent = guests[code];
+  }
+
+  // Photo upload
+  function loadPhoto(input, imgId, slotId) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      const img = document.getElementById(imgId);
+      img.src = e.target.result;
+      document.getElementById(slotId).classList.add('has-image');
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+</script>
+
+</body>
+</html>
