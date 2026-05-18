@@ -747,12 +747,12 @@
   
 
 
-  <p class="hero-eyebrow">С радостью приглашаем <span id="guest-name">вас</span></p>
+  <p class="hero-eyebrow" id="hero-invite" style="display:none;">С радостью приглашаем <span id="guest-name"></span></p>
 
   <div class="hero-names">
-    <span>[Имя]</span>
+    <span>Анвар</span>
     <span class="hero-ampersand">&amp;</span>
-    <span>[Имя]</span>
+    <span>Ильвина</span>
   </div>
 
   <div class="hero-divider">
@@ -1183,9 +1183,9 @@
 <script>
   // Гости — добавляйте сюда: код: "Имя"
   const guests = {
-    "1001": "Анна",
-    "1002": "Михаил",
-    "1003": "Елена",
+    "2001": "к",
+    "1002": "Мих",
+    "1003": "Ел",
     // сюда добавляйте новых гостей...
   };
   const params = new URLSearchParams(window.location.search);
@@ -1193,6 +1193,7 @@
   if (code) {
     const pronoun = code.startsWith("1") ? "тебя" : "вас";
     document.getElementById("guest-name").textContent = guests[code] || pronoun;
+    document.getElementById("hero-invite").style.display = "";
   }
 
   // Photo upload
