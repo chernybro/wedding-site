@@ -119,7 +119,7 @@
 
   .hero-divider {
     display: flex; align-items: center; gap: 1.5rem;
-    margin: 2.5rem auto;
+    margin: 2.5rem 0;
     width: 280px;
     animation: fadeUp 1s ease 0.3s both;
   }
@@ -141,6 +141,7 @@
   }
 
   .hero-location {
+    display: flex; flex-direction: column; align-items: center; gap: 0.2rem;
     font-size: 0.7rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -148,6 +149,7 @@
     margin-top: 0.6rem;
     animation: fadeUp 1s ease 0.55s both;
   }
+  .hero-location-dot { letter-spacing: 0; }
 
   .hero-cta {
     margin-top: 3rem;
@@ -181,8 +183,7 @@
 
   /* SCROLL INDICATOR */
   .scroll-hint {
-    position: absolute; bottom: 2.5rem; left: 50%;
-    transform: translateX(-50%);
+    position: absolute; bottom: 2.5rem; left: 0; right: 0;
     display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
     color: var(--stone-light);
     font-size: 0.6rem;
@@ -704,6 +705,7 @@
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .deco { width: 160px !important; }
+    .hero-location { white-space: nowrap; font-size: 0.55rem; }
     nav { gap: 0.5rem 1rem; font-size: 0.58rem; padding: 0.7rem 1rem; flex-wrap: wrap; }
     .story-layout, .hotel-layout { grid-template-columns: 1fr; gap: 2.5rem; }
     .details-grid { grid-template-columns: 1fr; }
@@ -758,7 +760,11 @@
   </div>
 
   <p class="hero-date">15 августа 2026</p>
-  <p class="hero-location">◈ Black River · [Город] ◈</p>
+  <p class="hero-location">
+    <span>Black River</span>
+    <span class="hero-location-dot">·</span>
+    <span>Павловское водохранилище</span>
+  </p>
 
 <a class="scroll-hint" href="#story">
     <span>Далее</span>
@@ -999,7 +1005,7 @@
 
 <!-- PROGRAM -->
 <div style="background: var(--cream); width: 100%; position:relative; overflow:hidden;">
-<img src="photos/gallery-bg-1.png" class="deco" style="position:absolute; pointer-events:none; z-index:0; left:-40px; bottom:-20px; width:520px; opacity:0.65; transform:rotate(10deg);" alt="">
+<img src="photos/gallery-bg-1.png" class="deco" style="position:absolute; pointer-events:none; z-index:0; right:-40px; bottom:-20px; width:520px; opacity:0.65; transform:rotate(-10deg);" alt="">
 <div class="program-wrapper" id="program">
   <div class="reveal">
     <p class="section-eyebrow">15 августа · день свадьбы</p>
