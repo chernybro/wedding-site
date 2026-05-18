@@ -189,6 +189,8 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     animation: fadeUp 1s ease 1s both;
+    cursor: pointer;
+    text-decoration: none;
   }
   .scroll-line {
     width: 1px; height: 40px;
@@ -758,10 +760,10 @@
   <p class="hero-date">15 августа 2026</p>
   <p class="hero-location">◈ Black River · [Город] ◈</p>
 
-<div class="scroll-hint">
+<a class="scroll-hint" href="#story">
     <span>Далее</span>
     <div class="scroll-line"></div>
-  </div>
+  </a>
 </div>
 
 <!-- STORY -->
@@ -823,14 +825,14 @@
     <div class="detail-card reveal">
       <div class="detail-icon">📅</div>
       <div class="detail-title">Дата</div>
-      <div class="detail-main">[День Месяц]<br>[Год]</div>
-      <div class="detail-sub">Начало в [00:00]<br>Просьба прибыть заранее</div>
+      <div class="detail-main">15 августа</div>
+      <div class="detail-sub">Начало в 16:00<br></div>
     </div>
     <div class="detail-card reveal" style="transition-delay: 0.1s">
       <div class="detail-icon">📍</div>
       <div class="detail-title">Место</div>
       <div class="detail-main">Black River</div>
-      <div class="detail-sub">[Адрес]<br>[Город, Страна]</div>
+      <div class="detail-sub">База отдыха<br>на Павловском водохранилище</div>
     </div>
     <div class="detail-card reveal" style="transition-delay: 0.2s">
       <div class="detail-icon">👗</div>
@@ -970,25 +972,18 @@
       <div class="timeline-time">15:00</div>
       <div class="timeline-content">
         <div class="timeline-event">Заселение в отель</div>
-        <div class="timeline-desc">Заезд открывается с 15:00. Ресепшн подготовит ключи — скажите, что вы гости свадьбы [Имя] &amp; [Имя].</div>
+        <div class="timeline-desc">Заезд открывается с 15:00. Ресепшн подготовит ключи — скажите, что вы гости свадьбы</div>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-time">15:00–</div>
+      <div class="timeline-time"></div>
       <div class="timeline-content">
         <div class="timeline-event">Свободное время</div>
-        <div class="timeline-desc">Прогуляйтесь по территории, искупайтесь, отдохните с дороги. Водохранилище и горы уже ждут.</div>
+        <div class="timeline-desc">Прогуляйтесь по территории, искупайтесь, отдохните с дороги.</div>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-time">[00:00]</div>
-      <div class="timeline-content">
-        <div class="timeline-event">Неформальный ужин накануне</div>
-        <div class="timeline-desc">Все приехавшие гости и молодожёны собираются за общим столом — лёгкий ужин, знакомство, атмосфера накануне. Подробности уточним ближе к дате.</div>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-time">Вечер</div>
+      <div class="timeline-time"></div>
       <div class="timeline-content">
         <div class="timeline-event">Отдых перед большим днём</div>
         <div class="timeline-desc">Выспитесь — завтра будет незабываемый день 🌿</div>
@@ -1012,35 +1007,35 @@
   </div>
   <div class="timeline reveal timeline-frames">
     <div class="timeline-item">
-      <div class="timeline-time">00:00</div>
+      <div class="timeline-time">15:00-15:50</div>
       <div class="timeline-content">
         <div class="timeline-event">Сбор гостей</div>
-        <div class="timeline-desc">Встреча гостей у входа в отель, лёгкие закуски и приветственные напитки</div>
+        <div class="timeline-desc">Встреча гостей, лёгкие закуски и приветственные напитки</div>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-time">00:00</div>
+      <div class="timeline-time">16:00</div>
       <div class="timeline-content">
         <div class="timeline-event">Церемония бракосочетания</div>
         <div class="timeline-desc">Выездная регистрация на пирсе над водохранилищем — торжественное обещание вечной любви</div>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-time">00:00</div>
+      <div class="timeline-time"></div>
       <div class="timeline-content">
         <div class="timeline-event">Фотосессия</div>
         <div class="timeline-desc">Памятные снимки с молодожёнами и группами гостей</div>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-time">00:00</div>
+      <div class="timeline-time">17:00</div>
       <div class="timeline-content">
         <div class="timeline-event">Банкет</div>
         <div class="timeline-desc">Торжественный ужин, тосты и музыка под открытым небом</div>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-time">00:00</div>
+      <div class="timeline-time"></div>
       <div class="timeline-content">
         <div class="timeline-event">Вечеринка и танцы</div>
         <div class="timeline-desc">Праздник продолжается — музыка, танцы и незабываемые воспоминания</div>
@@ -1073,7 +1068,7 @@
     <div class="hotel-info reveal">
       <h3>Black River</h3>
       <p>Расположен прямо на берегу водохранилища, отель предлагает потрясающий вид на горы и воду. Именно здесь будет проходить церемония на пирсе и торжественный ужин.</p>
-      <p>Для гостей свадьбы действует специальная цена на проживание. Чтобы забронировать номер, свяжитесь с отелем напрямую.</p>
+      <p></p>
       <div class="hotel-features">
         <span class="hotel-tag">Вид на воду</span>
         <span class="hotel-tag">Пирс</span>
@@ -1082,7 +1077,7 @@
         <span class="hotel-tag">Ресторан</span>
         <span class="hotel-tag">Парковка</span>
       </div>
-      <a href="#" class="btn">Сайт отеля ↗</a>
+      <a href="https://pavlovka-dom.ru/" class="btn">Сайт отеля ↗</a>
     </div>
   </div>
 </section>
@@ -1159,23 +1154,15 @@
   <div class="faq-list reveal">
     <div class="faq-item">
       <div class="faq-question">Можно ли приехать с детьми?</div>
-      <div class="faq-answer">[Ваш ответ здесь. Например: Мы очень любим детей! Дети гостей до 5 лет принимаются без ограничений. Для детей постарше просьба уточнить при подтверждении.]</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Как добраться до отеля?</div>
-      <div class="faq-answer">[Ваш ответ. Например: Ближайший аэропорт — [название], далее такси или трансфер около 40 минут. Мы организуем автобус от [место] — подробности при подтверждении.]</div>
+      <div class="faq-answer">Мы очень любим детей! Дети гостей 10+ лет принимаются без ограничений. Для детей младше просьба уточнить</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">Будет ли трансфер от/до отеля?</div>
-      <div class="faq-answer">[Ваш ответ. Например: Да, мы организуем трансфер из [город]. Точное расписание будет выслано подтвердившим гостям за 2 недели до свадьбы.]</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-question">Что дарить?</div>
-      <div class="faq-answer">[Ваш ответ. Например: Лучший подарок для нас — ваше присутствие! Если вы хотите сделать что-то особенное, мы будем рады взносу в наш медовый месяц.]</div>
+      <div class="faq-answer">Да, мы организуем трансфер из Уфы. Точное расписание будет выслано подтвердившим гостям за X недели до свадьбы</div>
     </div>
     <div class="faq-item">
       <div class="faq-question">Что будет, если будет дождь?</div>
-      <div class="faq-answer">[Ваш ответ. Например: Не переживайте — у нас есть крытая резервная площадка прямо в отеле. Мероприятие пройдёт в любую погоду!]</div>
+      <div class="faq-answer">Мы не боимся дождя. Маленький дождь не помешает празднику, в худшем случае укроемся прямо в отеле. Мероприятие пройдёт в любую погоду!</div>
     </div>
 
   </div>
@@ -1187,8 +1174,8 @@
 <img src="photos/gallery-bg-3.png" class="deco" style="position:absolute; pointer-events:none; z-index:0; right:0; bottom:0; width:380px; opacity:0.2;" alt="">
 
 
-  <div class="footer-names">[Имя] <span class="footer-hearts">♥</span> [Имя]</div>
-  <p>С любовью ждём вас · 15 августа 2026 · [Место]</p>
+  <div class="footer-names"><span class="footer-hearts">♥</span></div>
+  <p>С любовью ждём вас · 15 августа 2026 · Black River</p>
 </footer>
 
 <script>
