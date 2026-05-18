@@ -1197,8 +1197,9 @@
   };
   const params = new URLSearchParams(window.location.search);
   const code = params.get("g");
-  if (code && guests[code]) {
-    document.getElementById("guest-name").textContent = guests[code];
+  if (code) {
+    const pronoun = code.startsWith("1") ? "тебя" : "вас";
+    document.getElementById("guest-name").textContent = guests[code] || pronoun;
   }
 
   // Photo upload
