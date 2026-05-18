@@ -621,14 +621,14 @@
   /* GALLERY */
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     margin-top: 3rem;
   }
   .gallery-slot {
     background: var(--sage-pale);
     border: 1px solid rgba(122,140,110,0.18);
-    aspect-ratio: 4/3;
+    aspect-ratio: 1/1;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     gap: 0.5rem;
@@ -643,7 +643,7 @@
   }
   .gallery-slot:hover { border-color: var(--sage); transform: scale(1.01); }
   .gallery-slot:first-child {
-    grid-column: span 2;
+    grid-column: span 4;
     aspect-ratio: 16/9;
   }
   .gallery-slot img {
@@ -1062,14 +1062,7 @@
   </div>
   <div class="hotel-layout">
     <div class="hotel-img reveal">
-      <svg width="60" height="60" viewBox="0 0 60 60" fill="none" opacity="0.5">
-        <path d="M10 50 Q30 10 50 50" stroke="#6a9db5" stroke-width="2" fill="none"/>
-        <circle cx="15" cy="42" r="4" fill="#6a9db5" opacity="0.5"/>
-        <circle cx="30" cy="22" r="5" fill="#6a9db5" opacity="0.5"/>
-        <circle cx="45" cy="42" r="4" fill="#6a9db5" opacity="0.5"/>
-        <rect x="5" y="48" width="50" height="2" fill="#6a9db5" opacity="0.4"/>
-      </svg>
-      <div class="hotel-img-label">Фото отеля</div>
+      <img src="photos/hotel-1.webp" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;" alt="Black River">
     </div>
     <div class="hotel-info reveal">
       <h3>Black River</h3>
@@ -1102,42 +1095,42 @@
   </div>
   <div class="gallery-grid reveal">
     <!-- ФОТО 1: широкое (занимает 2 колонки) — идеально для вида на водохранилище или пирс -->
-    <div class="gallery-slot" id="g1">
+    <div class="gallery-slot has-image" id="g1">
       <div class="photo-placeholder-icon">📷</div>
       <div class="photo-label">Главный вид · пирс или водохранилище</div>
-      <img id="g1-img" src="" alt="Галерея 1">
+      <img id="g1-img" src="photos/hotel-5.webp" alt="Галерея 1">
       <input type="file" accept="image/*" onchange="loadPhoto(this,'g1-img','g1')">
     </div>
     <!-- ФОТО 2 -->
-    <div class="gallery-slot" id="g2">
+    <div class="gallery-slot has-image" id="g2">
       <div class="photo-placeholder-icon">📷</div>
       <div class="photo-label">Фото 2 · территория</div>
-      <img id="g2-img" src="" alt="Галерея 2">
+      <img id="g2-img" src="photos/hotel-5.jpg" alt="Галерея 2">
       <input type="file" accept="image/*" onchange="loadPhoto(this,'g2-img','g2')">
     </div>
     <!-- ФОТО 3 -->
-    <div class="gallery-slot" id="g3">
+    <div class="gallery-slot has-image" id="g3">
       <div class="photo-placeholder-icon">📷</div>
       <div class="photo-label">Фото 3 · горы или природа</div>
-      <img id="g3-img" src="" alt="Галерея 3">
+      <img id="g3-img" src="photos/hotel-2.webp" alt="Галерея 3">
       <input type="file" accept="image/*" onchange="loadPhoto(this,'g3-img','g3')">
     </div>
     <!-- ФОТО 4 -->
-    <div class="gallery-slot" id="g4">
+    <div class="gallery-slot has-image" id="g4">
       <div class="photo-placeholder-icon">📷</div>
       <div class="photo-label">Фото 4 · декор или цветы</div>
-      <img id="g4-img" src="" alt="Галерея 4">
+      <img id="g4-img" src="photos/hotel-4.webp" alt="Галерея 4">
       <input type="file" accept="image/*" onchange="loadPhoto(this,'g4-img','g4')">
     </div>
     <!-- ФОТО 5 -->
-    <div class="gallery-slot" id="g5">
+    <div class="gallery-slot has-image" id="g5">
       <div class="photo-placeholder-icon">📷</div>
       <div class="photo-label">Фото 5 · банкетная зона</div>
-      <img id="g5-img" src="" alt="Галерея 5">
+      <img id="g5-img" src="photos/hotel-3.webp" alt="Галерея 5">
       <input type="file" accept="image/*" onchange="loadPhoto(this,'g5-img','g5')">
     </div>
     <!-- ФОТО 6 -->
-    <div class="gallery-slot" id="g6">
+    <div class="gallery-slot" id="g6" style="display:none;">
       <div class="photo-placeholder-icon">📷</div>
       <div class="photo-label">Фото 6 · детали или атмосфера</div>
       <img id="g6-img" src="" alt="Галерея 6">
