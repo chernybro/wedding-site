@@ -1340,10 +1340,19 @@
   audio.addEventListener('play',  () => btn.classList.add('playing'));
   audio.addEventListener('pause', () => btn.classList.remove('playing'));
 
+  function fadeOut() {
+    const step = () => {
+      audio.volume = Math.max(audio.volume - 0.003, 0);
+      if (audio.volume > 0) requestAnimationFrame(step);
+      else audio.pause();
+    };
+    requestAnimationFrame(step);
+  }
+
   // Кнопка паузы/воспроизведения
   btn.addEventListener('click', () => {
     if (audio.paused) fadeIn();
-    else audio.pause();
+    else fadeOut();
   });
 
   // Сплеш — скрываем и запускаем музыку при первом клике
