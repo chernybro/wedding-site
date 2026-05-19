@@ -715,9 +715,99 @@
     .story-visual { order: -1; }
     .story-accent { display: none; }
   }
+
+  /* SPLASH SCREEN */
+  #splash {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    cursor: pointer;
+    transition: opacity 0.8s ease;
+  }
+  #splash.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  #splash-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 300;
+    color: var(--stone);
+    letter-spacing: 0.04em;
+  }
+  #splash-names em { color: var(--sage); font-style: italic; }
+  #splash-hint {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stone-light);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+  #splash-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--sage-light);
+  }
+
+  /* MUSIC BUTTON */
+  #music-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 200;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 1.5px solid rgba(122,140,110,0.45);
+    background: rgba(250, 247, 240, 0.92);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 16px rgba(74,70,64,0.12);
+    transition: background 0.3s, border-color 0.3s, transform 0.2s;
+  }
+  #music-btn:hover {
+    background: var(--sage-pale);
+    border-color: var(--sage);
+    transform: scale(1.08);
+  }
+  #music-btn svg { width: 1.1rem; height: 1.1rem; fill: var(--sage); }
+  #music-btn .icon-pause { display: none; }
+  #music-btn.playing .icon-play  { display: none; }
+  #music-btn.playing .icon-pause { display: block; }
 </style>
 </head>
 <body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div id="splash-names"><em>Анвар</em> &amp; <em>Илвина</em></div>
+  <div id="splash-note">15 августа 2026</div>
+  <div id="splash-hint">Нажмите, чтобы открыть приглашение</div>
+</div>
+
+<!-- MUSIC -->
+<audio id="bg-music" loop preload="auto">
+  <source src="Adriano Celentano - Ja Tebia Liubliu (Remastered).mp3" type="audio/mpeg">
+</audio>
+<button id="music-btn" aria-label="Музыка">
+  <svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+  <svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+</button>
 
 <!-- NAV -->
 <nav>
@@ -1226,6 +1316,41 @@
     q.addEventListener('click', () => {
       q.parentElement.classList.toggle('open');
     });
+  });
+
+  // MUSIC
+  const audio  = document.getElementById('bg-music');
+  const btn    = document.getElementById('music-btn');
+  const splash = document.getElementById('splash');
+  const TARGET_VOLUME = 0.4;
+
+  function fadeIn() {
+    audio.volume = 0;
+    audio.play().catch(() => {});
+    let v = 0;
+    const step = () => {
+      v = Math.min(v + 0.001, TARGET_VOLUME);
+      audio.volume = v;
+      if (v < TARGET_VOLUME) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  // Синхронизируем иконку с состоянием аудио
+  audio.addEventListener('play',  () => btn.classList.add('playing'));
+  audio.addEventListener('pause', () => btn.classList.remove('playing'));
+
+  // Кнопка паузы/воспроизведения
+  btn.addEventListener('click', () => {
+    if (audio.paused) fadeIn();
+    else audio.pause();
+  });
+
+  // Сплеш — скрываем и запускаем музыку при первом клике
+  splash.addEventListener('click', () => {
+    splash.classList.add('hidden');
+    setTimeout(() => splash.remove(), 900);
+    fadeIn();
   });
 
 </script>
